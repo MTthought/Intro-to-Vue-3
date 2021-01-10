@@ -1,8 +1,9 @@
 const app = Vue.createApp({
-    data: function(){
+    data() {
         return {
             product: 'Socks',
-            description: 'The worst socks you will ever have'
+            image: './assets/images/socks_blue.jpg',
+            url: 'https://www.vuemastery.com/courses/intro-to-vue-3/attribute-binding-vue3'
         }
     }
 })
