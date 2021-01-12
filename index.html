@@ -28,7 +28,7 @@
             </ul>
             <div v-for="variant in variants" :key="variant.id">{{ variant.colour }}</div>
             <ul>
-              <li v-for="size in sizes">{{ size }}</li>
+              <li v-for="(size, index) in sizes" :key="index">{{ size }}</li>
             </ul>
             <a :href="url">link</a>
           </div>
