@@ -26,13 +26,13 @@
             <ul>
               <li v-for="detail in details">{{ detail }}</li>
             </ul>
-            <div v-for="variant in variants" :key="variant.id" @mouseover="changeImg(variant.image)">{{ variant.colour }}</div>
+            <div v-for="variant in variants" :key="variant.id" @mouseover="changeImg(variant.image)" class="color-circle" :style="{ backgroundColor: variant.colour }"></div>
             <ul>
               <li v-for="(size, index) in sizes" :key="index">{{ size }}</li>
             </ul>
-            <a :href="url">link</a>
-            <button class="button" @click="addToCart">Add to cart</button>
-            <button class="button" @click="decrementCart">Decrement</button>
+            <!-- <a :href="url">link</a> -->
+            <button class="button" @click="addToCart" :disabled="inventory === 0" :class="{ disabledButton: inventory === 0 }">Add to cart</button>
+            <button class="button" @click="decrementCart" :disabled="cart === 0" :class="{disabledButton: cart === 0}">Remove item</button>
           </div>
         </div>
       </div>
