@@ -31,12 +31,13 @@ const app = Vue.createApp({
     },
     computed: {
         title() {
-            const title = `${this.brand} ${this.product}`
+            return `${this.brand} ${this.product}`
+        },
+        sale(){
             if(this.onSale){
-                return `${title} is on sale`
-            }else{
-                return title
+                return `${this.title} is on sale`
             }
+            return ''
         },
         img() {
             return this.variants[this.activeVariant].image
