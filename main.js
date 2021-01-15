@@ -10,9 +10,10 @@ const app = Vue.createApp({
         addToCart(productId){
             this.cart.push(productId)
         },
-        decrementCart(){
-            if(this.cart.length > 0){
-                this.cart.pop()
+        decrementCart(productId){
+            const index = this.cart.indexOf(productId)
+            if(index > -1){
+                this.cart.splice(index, 1)
             }
         }
     }

@@ -29,7 +29,7 @@ app.component('product-display', {
         </ul>
         <!-- <a :href="url">link</a> -->
         <button class="button" @click="addToCart" :disabled="inventory === 0" :class="{ disabledButton: inventory === 0 }">Add to cart</button>
-        <button class="button" @click="decrementCart" :disabled="cart.length === 0" :class="{ disabledButton: cart.length === 0 }">Remove item</button>
+        <button class="button" @click="decrementCart" :disabled="cart.length === 0" :class="{ disabledButton: cart.length === 0 || inventory === 0 }">Remove item</button>
       </div>
     </div>
   </div>`,
@@ -56,7 +56,7 @@ app.component('product-display', {
           this.$emit('add-to-cart', this.variants[this.activeVariant].id)
         },
         decrementCart(){
-          this.$emit('decrement-cart')
+          this.$emit('decrement-cart', this.variants[this.activeVariant].id)
         }
     },
     computed: {
