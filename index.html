@@ -15,18 +15,18 @@
       <div class="product-display">
         <div class="product-container">
           <div class="product-image">
-            <img :src="image" :alt="product" :class="{ 'out-of-stock-img': inventory === 0 }">
+            <img :src="img" :alt="product" :class="{ 'out-of-stock-img': inventory === 0 }">
           </div>
           <div class="product-info">
-            <h1>{{ product }}</h1>
-            <p v-show="onSale">On sale</p>
+            <h1>{{ title }}</h1>
+            <!-- <p v-show="onSale">On sale</p> -->
             <p v-if="inventory > 10">In stock</p>
             <p v-else-if="inventory <= 10 && inventory > 0">Almost sold out!</p>
             <p v-else>Out of stock</p>
             <ul>
               <li v-for="detail in details">{{ detail }}</li>
             </ul>
-            <div v-for="variant in variants" :key="variant.id" @mouseover="changeImg(variant.image)" class="color-circle" :style="{ backgroundColor: variant.colour }"></div>
+            <div v-for="(variant, index) in variants" :key="variant.id" @mouseover="updateVariant(index)" class="color-circle" :style="{ backgroundColor: variant.colour }"></div>
             <ul>
               <li v-for="(size, index) in sizes" :key="index">{{ size }}</li>
             </ul>
