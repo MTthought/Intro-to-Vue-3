@@ -32,6 +32,8 @@ app.component('product-display', {
         <button class="button" @click="decrementCart" :disabled="cart.length === 0" :class="{ disabledButton: cart.length === 0 || inventory === 0 }">Remove item</button>
       </div>
     </div>
+    <review-list v-if="reviews.length" :reviews="reviews"></review-list>
+    <review-form @review-submitted="addReview"></review-form>
   </div>`,
     data() {
         return {
@@ -45,7 +47,8 @@ app.component('product-display', {
                 {id: 1, colour: 'green', image: './assets/images/socks_green.jpg', inventory: 50},
                 {id: 2, colour: 'blue', image: './assets/images/socks_blue.jpg', inventory: 0}
             ],
-            sizes: [36, 38, 42]
+            sizes: [36, 38, 42],
+            reviews: []
         }
     },
     methods: {
@@ -57,6 +60,9 @@ app.component('product-display', {
         },
         decrementCart(){
           this.$emit('decrement-cart', this.variants[this.activeVariant].id)
+        },
+        addReview(review){
+          this.reviews.push(review)
         }
     },
     computed: {

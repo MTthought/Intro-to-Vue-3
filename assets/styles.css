@@ -152,6 +152,9 @@ select {
   background-color: white;
   cursor: pointer;
 }
+select:nth-child(7) {
+  margin-bottom: 20px;
+}
 
 textarea {
   width: 95%;
